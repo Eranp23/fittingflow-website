@@ -1,0 +1,416 @@
+@import "tailwindcss";
+
+/* Copied from the FittingFlow app (src/styles/base.css) so the site looks the same. */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 220 9% 25%; /* Replaced 315 100% 25% → gray tone (#4b5563) */
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 9% 25%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 9% 25%;
+
+    --primary: 220 9% 35%; /* neutral gray primary (#4b5563) */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 5% 80%; /* light gray secondary */
+    --secondary-foreground: 220 9% 25%;
+
+    --muted: 220 10% 92%;
+    --muted-foreground: 220 9% 35%;
+
+    --accent: 220 8% 85%;
+    --accent-foreground: 220 9% 25%;
+
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 10% 85%;
+    --input: 220 10% 85%;
+    --ring: 220 10% 45%;
+
+    --radius: 0.75rem;
+
+    /* Sidebar gray theme */
+    --sidebar-background: 220 8% 96%;
+    --sidebar-foreground: 220 9% 25%;
+    --sidebar-primary: 220 9% 35%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 8% 90%;
+    --sidebar-accent-foreground: 220 9% 30%;
+    --sidebar-border: 220 10% 82%;
+    --sidebar-ring: 220 9% 35%;
+
+    /* Neutral palette replacing pink/blue */
+    --neutral-primary: 220 9% 35%;
+    --neutral-secondary: 220 5% 60%;
+    --neutral-accent: 220 10% 80%;
+    --neutral-background: 0 0% 98%;
+    --neutral-border: 220 10% 85%;
+    --neutral-text: 220 9% 25%;
+  }
+
+  .dark {
+    --background: 220 15% 10%;
+    --foreground: 0 0% 90%;
+    --card: 220 15% 14%;
+    --card-foreground: 0 0% 95%;
+    --popover: 220 15% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 220 8% 70%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 10% 25%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 220 15% 20%;
+    --muted-foreground: 220 10% 65%;
+    --accent: 220 10% 25%;
+    --accent-foreground: 0 0% 95%;
+    --border: 220 10% 20%;
+    --input: 220 10% 25%;
+    --ring: 220 9% 45%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html, body {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-playfair-family), "Playfair Display", serif;
+    @apply font-medium;
+  }
+
+  .font-elegant { font-family: var(--font-cormorant-family), "Cormorant Garamond", serif; }
+  .font-playfair { font-family: var(--font-playfair-family), "Playfair Display", serif; }
+
+  p, span, div, button, input, textarea, select, label {
+    font-size: 14px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  @media (max-width: 640px) {
+    p, span, div, button, input, textarea, select, label {
+      font-size: 13px;
+    }
+  }
+
+  .sidebar-nav-link {
+    font-size: 14px !important;
+  }
+
+  @media (max-width: 640px) {
+    .sidebar-nav-link { font-size: 13px !important; }
+  }
+
+  .text-sm { font-size: 13px; }
+  .text-xs { font-size: 12px; }
+  .text-xs-14 { font-size: 14px !important; }
+  .text-lg { font-size: 16px; }
+  .text-xl { font-size: 18px; }
+  .text-2xl { font-size: 20px; }
+  .text-3xl { font-size: 24px; }
+
+  @media (max-width: 640px) {
+    .text-sm { font-size: 12px; }
+    .text-xs { font-size: 11px; }
+    .text-lg { font-size: 14px; }
+    .text-xl { font-size: 16px; }
+    .text-2xl { font-size: 18px; }
+    .text-3xl { font-size: 20px; }
+  }
+}
+
+@theme inline {
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --font-urbanist: var(--font-urbanist-family), sans-serif;
+}
+
+/* Tailwind 3 defaulted borders to the theme border colour; keep that look. */
+@layer base {
+  *, ::after, ::before { border-color: hsl(var(--border)); }
+}
+
+/* From the app's src/index.css */
+.bgImg {
+    background-image: url(/uploads/bgImg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.onboarding-bgImg {
+    background-image: url(/uploads/onboarding-bgImg.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bgBridal{
+    background-image: url(/uploads/bgBridal.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.page-urbanist h1, .page-urbanist h2, .page-urbanist h3, .page-urbanist h4, .page-urbanist h5, .page-urbanist div, .page-urbanist p {
+  font-family: var(--font-urbanist-family), 'Urbanist', sans-serif;
+}
+.feature-icon {
+  width: 42px;
+  height: 45px;
+  background-repeat: no-repeat;
+  background-size: 135px;
+  background-position: -28px;
+}
+.feature-icon.Calendar {
+  background-position: 2px 10px;
+}
+.feature-icon.Users {
+  background-position: -30px 10px;
+}
+.feature-icon.Palette {
+  background-position: -70px 10px;
+} 
+.feature-icon.order {
+  background-position: -100px 10px;
+}
+.feature-icon.CreditCard {
+  background-position: 10px -26px;
+}
+.feature-icon.Measurements {
+  background-position: -60px -26px;
+}
+.feature-icon.MapPin {
+  background-position: -108px -26px;
+}
+.feature-icon.Mail {
+  background-position: 6px -62px;
+}
+.feature-icon.Shield {
+  background-position: -30px -65px;
+}
+.feature-icon.Settings {
+  background-position: -60px -60px;
+}
+.feature-icon.BarChart {
+  background-position: -100px -60px;
+}
+
+@media (max-width:650px) {
+    .onboarding-bg.onboarding-bgImg {
+        background-image: none !important;
+    }
+}@keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  .animate-scroll {
+    animation: scroll 25s linear infinite;
+  }
+  .timeline-section{
+    padding:80px 20px;
+    background:#f6f7fb;
+}
+
+.timeline-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:60px;
+}
+
+.timeline{
+    position:relative;
+    max-width:1000px;
+    margin:auto;
+}
+
+
+.timeline-item{
+    padding:20px 40px;
+    position:relative;
+    width:50%;
+}
+
+.timeline-item.left{
+    left:0;
+    text-align:right;
+}
+
+.timeline-item.right{
+    left:50%;
+}
+
+.timeline-item::after{
+    content:none;
+
+}
+
+.timeline-item.right::after{
+    left:-10px;
+}
+
+.timeline-circle{
+  position: absolute;
+  top: 40px;
+  left: 100%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 50px;
+background: rgb(38 99 235 / 20%);
+  color: #000;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+.timeline-item.right .timeline-circle{
+  left: 0;
+}
+.timeline-item:after {
+  content: '';
+  position: absolute;
+  width: 40px;
+  height: 5px;
+  background: #a4a6ba73;
+  top: 30%;
+  border-radius: 5px;
+  right: 29px;
+}
+.timeline-item.right:after {
+
+  left: 29px;
+}
+.content{
+    background:#fff;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.05);
+  
+}
+
+.content h3{
+    font-size:22px;
+    margin-bottom:5px;
+}
+
+.content h4{
+    font-size:18px;
+    margin-bottom:10px;
+}
+
+.content p{
+    font-size:15px;
+    color:#666;
+}
+.custom-pagination .swiper-pagination-bullet, .feature-pagination .swiper-pagination-bullet  {
+  width: 44px;
+  height: 4px;
+  border-radius: 999px;
+  background: #ADADAD;
+  opacity: 1;
+  transition: all 0.3s ease;border-radius: 0;
+}
+
+.custom-pagination .swiper-pagination-bullet-active, .feature-pagination .swiper-pagination-bullet-active  {
+  background: #3868FC;
+ 
+}
+.cancelled-card{
+  filter: grayscale(1);
+}
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+@media(max-width:800px){
+  .timeline-item{
+    width: 100%;
+  }
+  .timeline-item .content{
+    padding-left: 35px;
+  }
+  .timeline-item.right{
+    left: 0  !important;
+  }
+  .timeline-item.left .timeline-circle, .timeline-item.right .timeline-circle{
+    left:40px !important;top:80px;
+  }
+  .timeline-item.right{
+
+    text-align:right;
+}
+.timeline-item:after{
+  display: none;
+}
+
+}
+/* ---- New home page (Natella's "bridal-bloom" design, Nov 2026) ---- */
+@layer base {
+  .ff-home, .ff-home h1, .ff-home h2, .ff-home h3, .ff-home h4, .ff-home p, .ff-home span, .ff-home a,
+  .ff-home button, .ff-home li, .ff-home summary, .ff-home div {
+    font-family: var(--font-urbanist-family), "Urbanist", sans-serif;
+  }
+  .ff-home p, .ff-home span, .ff-home div { font-size: inherit; line-height: inherit; }
+  .ff-home { font-size: 16px; line-height: 1.5; color: #191e49; }
+}
+@keyframes ff-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@keyframes ff-rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+@keyframes ff-progress { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+.ff-hero-bg {
+  background:
+    radial-gradient(55% 75% at 8% 62%, rgba(222, 110, 255, 0.95) 0%, rgba(168, 85, 255, 0.55) 38%, rgba(168, 85, 255, 0) 72%),
+    radial-gradient(55% 70% at 96% 38%, rgba(0, 98, 255, 0.95) 0%, rgba(0, 98, 255, 0) 70%),
+    linear-gradient(180deg, #3b2bea 0%, #2c36e4 48%, #1d2aa6 100%);
+}
+.ff-grid {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.07) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: radial-gradient(90% 80% at 50% 30%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(90% 80% at 50% 30%, #000 30%, transparent 85%);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ff-home * { animation: none !important; transition: none !important; }
+}

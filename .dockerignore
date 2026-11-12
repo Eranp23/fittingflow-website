@@ -1,0 +1,51 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.*
+!.env.example
+README.md
+PLAN.md
+.cursor
+AGENTS.md
+CLAUDE.md
+docs
+# Local-only photo libraries + raw creative masters — never ship these.
+# (NFT file tracing previously pulled them into the standalone image.)
+Photos
+content/creatives
+# Local backups of edited files — never ship these.
+_backups
+# Social/GBP video masters — keep off production image (Starter registry is 500MB)
+public/creatives
+*.pdf
+Website Review Report*
+AF1QipNNYRpMhnYw7W27ZMVoPapFh6qfJSyKriSAYqwv
+AF1Qip*
+scripts
+# The admin creative tool imports this one helper at build time.
+!scripts/creative-routing.mjs
+!scripts/creative-routing.d.ts
+*.py
+tsconfig.tsbuildinfo
+**/*.md
+!content/posts/**/*.md
+!content/posts/*.md
+!content/drafts/**/*.md
+!content/drafts/*.md
+!content/facebook/**/*.md
+!content/facebook/*.md
+!content/gbp/**/*.md
+!content/gbp/*.md
+!content/campaigns/**/*.md
+!content/campaigns/*.md
+!content/feedback/**/*.md
+!content/feedback/*.md
+npm-debug.log*
+.DS_Store
+coverage
+.vscode
+.idea
+
+public/uploads/figma-import
